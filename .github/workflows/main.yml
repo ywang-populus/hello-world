@@ -26,3 +26,6 @@ jobs:
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: rebase
+          title: 'Auto merge master (#${number})'
+          labels: |
+            automated pr

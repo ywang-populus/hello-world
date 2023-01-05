@@ -1,0 +1,15 @@
+name: Check PR CI
+
+jobs:
+  check-pr-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/check-pr-ci@v1
+        with:
+          filter-label: 'automated pr'
+          filter-head-ref: 'content'
+          success-review: true
+          success-merge: true
+          merge-method: 'rebase'
+          merge-title: 'Auto merge master (#${number})'
+          failure-close: true
