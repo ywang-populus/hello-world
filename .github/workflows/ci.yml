@@ -1,8 +1,7 @@
 name: Check PR CI
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: "*/10 * * * *"
 jobs:
   check-pr-ci:
     runs-on: ubuntu-latest
