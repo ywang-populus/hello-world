@@ -9,13 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: content
+          ref: master
       - name: Reset promotion branch
         run: |
           git pull origin master:master
           git reset --hard master
-          git branch sync/content
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: content
+          branch: sync/content
