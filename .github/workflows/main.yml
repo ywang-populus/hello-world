@@ -18,7 +18,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         id: cpr
         with:
-          branch: sync/content-${{ github.event.head_commit}}
+          branch: sync/content-${{ github.event.head_commit.timestamp}}
           delete-branch: true
       - name: Enable Pull Request Automerge
         if: steps.cpr.outputs.pull-request-operation == 'created'
