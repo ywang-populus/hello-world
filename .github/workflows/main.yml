@@ -12,8 +12,8 @@ jobs:
           ref: content
       - name: Pull master branch
         run: |
-          git config pull.rebase false
-          git pull origin master --allow-unrelated-histories
+          git config pull.rebase true
+          git pull origin master 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         id: cpr
