@@ -10,18 +10,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: content
-      - name: Reset promotion branch
+      - name: Pull master branch
         run: |
           git config pull.rebase true
-          git pull origin master:master
-          git reset --hard master
+          git pull origin master 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         id: cpr
         with:
           branch: sync/content-${{ github.event.head_commit.id}}
           delete-branch: true
-          title: 'Auto merge master (#${number})'
+          title: 'Auto merge master to content'
           labels: |
             automated pr
       - name: Enable Pull Request Automerge
@@ -29,5 +28,4 @@ jobs:
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: rebase
-         
+          merge-method: squash
