@@ -12,7 +12,7 @@ jobs:
           ref: content
       - name: Reset promotion branch
         run: |
-          git config pull.rebase false
+          git config pull.rebase true
           git pull origin master:master
           git reset --hard master
       - name: Create Pull Request
@@ -29,5 +29,5 @@ jobs:
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: squash
+          merge-method: rebase
          
