@@ -12,8 +12,7 @@ jobs:
           ref: content
       - name: Reset promotion branch
         run: |
-          git config --global  pull.ff true
-          git pull origin master:master
+          git pull master:master
           git reset --hard master
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
@@ -21,7 +20,7 @@ jobs:
         with:
           branch: sync/content-${{ github.event.head_commit.id}}
           delete-branch: true
-          title: 'Auto merge master (#${number})'
+          title: 'Auto merge master to content'
           labels: |
             automated pr
       - name: Enable Pull Request Automerge
