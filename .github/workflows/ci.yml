@@ -1,7 +1,7 @@
 name: Check PR
 on:
   schedule:
-    - cron: "*/5 * * * * *"
+    - cron: "*/1 * * * * "
 jobs:
   check-pr-ci:
     runs-on: ubuntu-latest

@@ -20,12 +20,13 @@ jobs:
         with:
           branch: sync/content-${{ github.event.head_commit.id}}
           delete-branch: true
+          title: 'Auto merge master (#${number})'
+          labels: |
+            automated pr
       - name: Enable Pull Request Automerge
         if: steps.cpr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: rebase
-          title: 'Auto merge master (#${number})'
-          labels: |
-            automated pr
+         
