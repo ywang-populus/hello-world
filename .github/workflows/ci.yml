@@ -12,6 +12,6 @@ jobs:
           filter-head-ref: 'content'
           success-review: true
           success-merge: true
-          merge-method: 'rebase'
-          merge-title: 'Auto merge master (#${number})'
+          merge-method: 'squash'
+          merge-title: 'Auto merge master to content'
           failure-close: true
