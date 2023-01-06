@@ -12,8 +12,9 @@ jobs:
           ref: content
       - name: Reset promotion branch
         run: |
+          git config pull.rebase false
           git pull origin master:master
-          git reset --hard origin/master
+          git reset --hard master
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         id: cpr
