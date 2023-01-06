@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-name: Check PR CI
-on:
-  schedule:
-    - cron: "*/10 * * * *"
-=======
 name: Check PR
 on:
   schedule:
     - cron: "*/1 * * * * "
->>>>>>> master
 jobs:
   check-pr-ci:
     runs-on: ubuntu-latest
