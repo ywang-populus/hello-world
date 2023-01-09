@@ -1,10 +1,10 @@
-name: Create production promotion pull request
+name: Sync Content Only Environment with Production
 on:
   push:
     branches:
       - master
 jobs:
-  contentSyncwithProduction:
+  SyncProduction:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
