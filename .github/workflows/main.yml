@@ -30,6 +30,7 @@ jobs:
         env:      
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_METHOD: "squash"
+          BASE_BRANCHES: "content"
       # - name: Enable Pull Request Automerge
       #   if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
       #   uses: peter-evans/enable-pull-request-automerge@v2
