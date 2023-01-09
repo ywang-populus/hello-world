@@ -32,12 +32,12 @@ jobs:
       #     GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       #     MERGE_METHOD: "squash"
       #     BASE_BRANCHES: "content"
-      - name: Auto approve
-        if: steps.cpr.outputs.pull-request-operation == 'created'
-        uses: juliangruber/approve-pull-request-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
+      # - name: Auto approve
+      #   if: steps.cpr.outputs.pull-request-operation == 'created'
+      #   uses: juliangruber/approve-pull-request-action@v2
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     number: ${{ steps.cpr.outputs.pull-request-number }}
       - name: Enable Pull Request Automerge
         if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
         uses: peter-evans/enable-pull-request-automerge@v2
