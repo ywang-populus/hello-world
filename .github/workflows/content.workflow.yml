@@ -6,6 +6,7 @@ on:
 jobs:
   PushContent:
     runs-on: ubuntu-latest
+    #push content to master
     steps:
       - uses: actions/checkout@v3
         with:
@@ -30,4 +31,28 @@ jobs:
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
+      #push content to publish
+      - uses: actions/checkout@v3
+        with:
+          ref: publish
+      - name: Pull content branch
+        run: |
+          git fetch origin content:content
+          git reset --hard content
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        id: cprd
+        with:
+          token: ${{ secrets.PAT }}
+          branch: sync/publish
+          delete-branch: true
+          title: 'Automerge content to publish'
+          labels: |
+            automerge to publish
+      - name: Enable Pull Request Automerge
+        if: steps.cprd.outputs.pull-request-operation == 'created' || steps.cprd.outputs.pull-request-operation == 'updated'
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          pull-request-number: ${{ steps.cprd.outputs.pull-request-number }}
+          merge-method: squash    
          
