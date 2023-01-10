@@ -1,6 +1,7 @@
 name: Check PR
-on: [pull_request]
-
+on:
+  schedule:
+    - cron: "*/1 * * * * "
 jobs:
   check-pr-ci:
     runs-on: ubuntu-latest

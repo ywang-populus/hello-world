@@ -1,0 +1,33 @@
+name: Automerge Content Branch to Production
+on:
+  schedule:
+    - cron: "*/1 * * * * "
+jobs:
+  PushContent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: master
+      - name: Pull content branch
+        run: |
+          git fetch origin content:content
+          git reset --hard content
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        id: cpr
+        with:
+          #branch: sync/content-${{ github.event.head_commit.id}}
+          token: ${{ secrets.PAT }}
+          branch: release/master
+          delete-branch: true
+          title: 'Automerge content to master'
+          labels: |
+            automerge to master
+      - name: Enable Pull Request Automerge
+        if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
+         
