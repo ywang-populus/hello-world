@@ -1,4 +1,4 @@
-name: Sync Content Only Environment with Production
+name: Sync Content Branch with Production
 on:
   push:
     branches:
@@ -22,9 +22,9 @@ jobs:
           token: ${{ secrets.PAT }}
           branch: sync/content
           delete-branch: true
-          title: 'Auto merge master to content'
+          title: 'Automerge master to content'
           labels: |
-            automerge
+            automerge to content
       # - name: Enable pull Request automerge
       #   if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
       #   uses: "pascalgn/automerge-action@v0.15.5"
