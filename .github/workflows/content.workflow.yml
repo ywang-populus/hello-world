@@ -1,7 +1,8 @@
 name: Automerge Content Branch to Production
 on:
-  schedule:
-    - cron: "*/1 * * * * "
+  push:
+    branches:
+      - content
 jobs:
   PushContent:
     runs-on: ubuntu-latest
