@@ -4,7 +4,7 @@ on:
     branches:
       - content
 jobs:
-  PushContent:
+  PushContentToMasterAndPublish:
     runs-on: ubuntu-latest
     #push content to master
     steps:
