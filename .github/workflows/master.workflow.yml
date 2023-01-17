@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  SyncProduction:
+  SyncMasterToContent:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,5 +29,11 @@ jobs:
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: squash
+          merge-method: merge
+      # - name: Close Pull
+      #   uses: peter-evans/close-pull@v2
+      #   with:
+      #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+      #     comment: Auto-closing pull request
+      #     delete-branch: true    
          

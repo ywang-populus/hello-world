@@ -4,7 +4,7 @@ on:
     branches:
       - content
 jobs:
-  PushContent:
+  PushContentToMasterAndPublish:
     runs-on: ubuntu-latest
     #push content to master
     steps:
@@ -54,5 +54,6 @@ jobs:
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           pull-request-number: ${{ steps.cprd.outputs.pull-request-number }}
-          merge-method: squash    
+          merge-method: merge    
+
          
