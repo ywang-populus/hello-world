@@ -55,5 +55,4 @@ jobs:
         with:
           pull-request-number: ${{ steps.cprd.outputs.pull-request-number }}
           merge-method: merge    
-
          
