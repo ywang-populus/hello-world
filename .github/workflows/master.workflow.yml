@@ -30,10 +30,4 @@ jobs:
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: merge
-      # - name: Close Pull
-      #   uses: peter-evans/close-pull@v2
-      #   with:
-      #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-      #     comment: Auto-closing pull request
-      #     delete-branch: true    
          
