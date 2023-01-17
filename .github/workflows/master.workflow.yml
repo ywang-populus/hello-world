@@ -30,7 +30,6 @@ jobs:
         with:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
-          delete-branch: true 
       # - name: Close Pull
       #   uses: peter-evans/close-pull@v2
       #   with:
