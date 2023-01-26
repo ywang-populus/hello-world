@@ -1,4 +1,4 @@
-name: Monday 6AM Automerge Content Branch to Production
+name: Weekly Monday 6AM Automerge Content Branch to Production
 on:
   schedule:
     - cron: "0 6 * * mon"
