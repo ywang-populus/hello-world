@@ -1,8 +1,7 @@
-name: Automerge Content Branch to Production
+name: Daily 6AM Automerge Content Branch to Production
 on:
-  push:
-    branches:
-      - content
+  schedule:
+    - cron: "0 6 * * * "
 jobs:
   PushContentToMasterAndPublish:
     runs-on: ubuntu-latest
